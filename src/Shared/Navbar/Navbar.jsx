@@ -60,7 +60,7 @@ const Navbar = () => {
 	</>;
 	return (
 		<div>
-			<div className="navbar bg-base-100 px-14">
+			<div className="navbar bg-base-100  px-14">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -80,14 +80,14 @@ const Navbar = () => {
 						{navLinks}
 					</ul>
 				</div>
-				<div className="navbar-end"> 
+				<div className="navbar-end z-50"> 
 					{
 						user? <> <div className="dropdown dropdown-end">
 						{/* after login */}
 						<div>
-							<div className="w-10 h-10 " tabIndex={0}><img className="rounded-full"  src={user.photoURL ? user.photoURL : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="" /></div>
+							<div  className="w-10 h-10 z-40" tabIndex={0}><img className="rounded-full"  src={user.photoURL ? user.photoURL : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="" /></div>
 							<ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box ">
-								<li><a>Dashboard</a></li>
+								<li><Link to='/dashboard/register'>Dashboard</Link></li>
 								<li className="disabled"><a>{user?.displayName}</a></li>
 								<li className="disabled"><a>{user?.email}</a></li>
 								<button className="btn btn-error btn-sm" onClick={handleLogout}>Log Out</button>

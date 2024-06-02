@@ -11,8 +11,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   
     <HelmetProvider>
       <AuthProvider>
+        <div className='max-w-screen-xl mx-auto'>
         <RouterProvider router={router}>
         </RouterProvider>
+        </div>
       </AuthProvider>
     </HelmetProvider>
   </React.StrictMode>,
