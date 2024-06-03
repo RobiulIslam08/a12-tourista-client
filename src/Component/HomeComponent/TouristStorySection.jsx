@@ -34,7 +34,7 @@ const stories = [
 
 const TouristStorySection = () => {
     return (
-        <div className="bg-gray-900 py-12 px-8">
+        <div className="bg-gray-900 py-12 px-8 mb-40">
             <div className="container mx-auto text-center">
                 <h2 className="text-white text-3xl mb-8">Tourist Stories</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
