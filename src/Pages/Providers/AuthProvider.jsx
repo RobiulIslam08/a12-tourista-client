@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
+import axios from "axios";
 // import { auth } from "../firebase/firebase.config";
 // import { auth } from "../../firebase/firebase.config";
 // import { auth } from "../firebase/firebase.config";
@@ -19,10 +20,24 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [reload, setReload] = useState(false)
 
+    // save user
+    const saveUser = async (user) =>{
+        const currentUser = {
+            email: user?.email,
+            role: 'Tourist',
+            status: 'Verified'
+        }
+        const {data} = await axios.put(`${import.meta.env.VITE_API_URL}/user`, currentUser)
+        return data
+    }
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser)
             setUser(currentUser)
+            if(currentUser){
+                saveUser(currentUser)
+            }
             setLoading(false)
         })
         return () => unSubscribe()
@@ -36,32 +51,43 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const logout = () => {
+    const logOut = () => {
         setLoading(true)
         return signOut(auth)
     }
+    
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    })
+  }
+    // const logOut = async () => {
+    //     setLoading(true)
+    //     await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
+    //       withCredentials: true,
+    //     })
+    //     return signOut(auth)
+    //   }
     const signWithGoogle = () => {
         return signInWithPopup(auth, googleProvider)
     }
     const signWithGithub = () => {
         return signInWithPopup(auth, githubProvider)
     }
-    const updateUserProfile = (name, image) => {
-        return updateProfile(auth.currentUser, {
-            displayName: name, photoURL: image
-        })
-    }
+  
 
 
 
 
     const authInfo = {
+        updateUserProfile,
         signWithGithub,
         signWithGoogle,
         user,
         createUser,
         loginUser,
-        logout,
+        logOut,
         loading,
         updateUserProfile,
         setReload
