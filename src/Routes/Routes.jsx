@@ -5,6 +5,7 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Profile from "../Dashboard/Common/Profile";
+import GuideDetails from "../Pages/GuideDetails/GuideDetails";
 
 export const router = createBrowserRouter([
 	{
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'register',
 				element: <RegisterPage></RegisterPage>
+			},
+			{
+				path: 'guide-details/:id',
+				element: <GuideDetails></GuideDetails>
 			}
 		]
 	},

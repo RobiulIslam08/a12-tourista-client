@@ -7,7 +7,7 @@ import TouristStorySection from "../../Component/HomeComponent/TouristStorySecti
 
 const Home = () => {
 	return (
-		<div>
+		<div >
 			<Banner></Banner>
 			<TabTourist></TabTourist>
 			<TourTypeSection></TourTypeSection>
