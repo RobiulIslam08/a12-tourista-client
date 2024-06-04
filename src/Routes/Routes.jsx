@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import DashboardLayout from "../Layout/DashboardLayout";
+import Profile from "../Dashboard/Common/Profile";
 
 export const router = createBrowserRouter([
 	{
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
 				{
 					path: 'register',
 					element: <RegisterPage></RegisterPage>
+				},
+				{
+					path: 'my-profile',
+					element: <Profile></Profile>
 				}
 			
 		]

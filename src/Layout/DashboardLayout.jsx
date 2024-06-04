@@ -5,14 +5,14 @@ import Sidebar from "../Dashboard/Sidebar";
 
 const DashboardLayout = () => {
 	return (
-		<div className="relative md:flex  min-h-screen">
+		<div className="relative md:flex justify-evenly min-h-screen">
 			{/* sidebar */}
-			<div className="w-64 min-h-screen bg-[#e69a28a4]">
+			<div className="w-64 min-h-screen bg-pink-400">
 				<Sidebar></Sidebar>
 			</div>
 
 			{/* dynamic content for outlet */}
-			<div className="flex-1 md:ml-64">
+			<div className="flex-1">
 				<div className="p-5"> 
 				<Outlet></Outlet>
 				</div>

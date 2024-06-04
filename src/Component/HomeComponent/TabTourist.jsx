@@ -52,7 +52,7 @@ const TabTourist = () => {
 					<div className="max-w-4xl mx-auto">
 						<h2 className="text-2xl font-bold my-4 text-center sm:text-left">Discover the Beauty of Bangladesh</h2>
 						<p className="mb-4 text-justify">
-							Bangladesh is a land of natural beauty and rich cultural heritage. From the world's largest mangrove forest, the Sundarbans, to the longest natural sea beach, Cox's Bazar, there is much to explore and experience.
+							Bangladesh is a land of natural beauty and rich cultural heritage. From the world s largest mangrove forest, the Sundarbans, to the longest natural sea beach, Cox s Bazar, there is much to explore and experience.
 						</p>
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 							<iframe className="w-full aspect-video" src="https://www.youtube.com/embed/paNOhUirl9A?si=cZjwNv7xS3YXHd-R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
@@ -70,7 +70,7 @@ const TabTourist = () => {
 						<h3 className="text-xl font-bold my-4">Popular Destinations:</h3>
 						<ul className="list-disc ml-8">
 							<li>Sundarbans</li>
-							<li>Cox's Bazar</li>
+							<li>Cox s Bazar</li>
 							<li>Srimangal</li>
 							<li>Rangamati</li>
 						</ul>
