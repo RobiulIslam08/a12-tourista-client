@@ -7,11 +7,13 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Profile from "../Dashboard/Common/Profile";
 import GuideDetails from "../Pages/GuideDetails/GuideDetails";
 import AddPackage from "../Dashboard/AddPackage/AddPackage";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <MainLayout></MainLayout>,
+		errorElement:<ErrorPage></ErrorPage>,
 		children:[
 			{
 				path: '/',

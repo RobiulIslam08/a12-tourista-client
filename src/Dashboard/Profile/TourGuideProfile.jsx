@@ -34,6 +34,7 @@ const TourGuideProfile = () => {
 						title: `My data has been added`,
 						showConfirmButton: false,
 						timer: 1500
+						
 					});
 					// refetch()
 				}
