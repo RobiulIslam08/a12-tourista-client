@@ -8,6 +8,7 @@ import Profile from "../Dashboard/Common/Profile";
 import GuideDetails from "../Pages/GuideDetails/GuideDetails";
 import AddPackage from "../Dashboard/AddPackage/AddPackage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PackageDetails from "./PackageDetails/PackageDetails";
 
 export const router = createBrowserRouter([
 	{
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'guide-details/:id',
 				element: <GuideDetails></GuideDetails>
+			},
+			{
+				path: 'package-detaisl/:id',
+				element: <PackageDetails></PackageDetails>
 			}
 		]
 	},

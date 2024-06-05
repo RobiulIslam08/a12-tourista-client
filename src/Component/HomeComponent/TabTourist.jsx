@@ -1,34 +1,4 @@
 /* eslint-disable react/no-unknown-property */
-// import { useState } from "react";
-// import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-
-// import 'react-tabs/style/react-tabs.css';
-// const TabTourist = () => {
-// 	const [tabIndex, setTabIndex] = useState(0)
-// 	return (
-// 		<div className="my-40 ">
-// 			<div>
-// 				<p className="text-3xl font-bold text-center my-20">Tourism and Travel Guide S</p>
-// 			</div>
-// 			<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-// 				<TabList>
-// 					<Tab>Overview</Tab>
-// 					<Tab>Our Packages</Tab>
-// 					<Tab>Meet Our Tour Guides</Tab>
-// 				</TabList>
-// 				<TabPanel>
-// 					Overview
-// 				</TabPanel>
-// 				<TabPanel>
-// 					Our Packages
-// 				</TabPanel>
-// 				<TabPanel>
-// 					Meet Our Tour Guides
-// 				</TabPanel>
-// 			</Tabs>
-// 		</div>
-// 	);
-// };
 
 // export default TabTourist;
 import { useQuery } from "@tanstack/react-query";
@@ -37,14 +7,23 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
 
 const TabTourist = () => {
 	const [tabIndex, setTabIndex] = useState(0);
 	const axiosCommon = useAxiosCommon()
-	const {data = []} =  useQuery({
+	const { data = [] } = useQuery({
 		queryKey: ['guideInfo'],
-		queryFn: async () =>{
-			const {data} = await axiosCommon.get('/guideInfo')
+		queryFn: async () => {
+			const { data } = await axiosCommon.get('/guideInfo')
+			return data
+		}
+	})
+
+	const { data: Package = [] } = useQuery({
+		queryKey: ['add-package'],
+		queryFn: async () => {
+			const { data } = await axiosCommon.get('/add-package')
 			return data
 		}
 	})
@@ -95,24 +74,42 @@ const TabTourist = () => {
 					</div>
 				</TabPanel>
 				<TabPanel>
-					Our Packages
-				</TabPanel>
-				<TabPanel>
-					
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{data.map(item => <div key={item._id} className="card bg-base-100 shadow-xl">
-						<figure className="px-10 pt-10">
-							<img src={item.profile} alt="Shoes" className="rounded-full h-28 w-28" />
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+					{
+						Package.map(item => <div key={item._id} className="card  bg-base-100 shadow-xl">
+						<figure>
+							<img src={item.spotPhoto} alt="Shoes" />
 						</figure>
-						<div className="card-body items-center text-center">
-							<h2 className="card-title">{item.name}</h2>
-							<p>{item.education}</p>
-							<div className="card-actions">
-								<Link to={`/guide-details/${item._id}`}><button className="btn btn-secondary btn-sm">Details</button></Link>
+							<FaHeart className="text-fuchsia-600 text-2xl hover:text-pink-600 absolute right-4  top-4"/>
+						<div className="card-body">
+							<h2 className="text-xl font-bold">{item.tourType}</h2>
+							<p className="">{item.tripTitle}</p>
+							<p >Price: {item.price}$</p>
+							<div className="card-actions justify-start">
+								<Link to={`/package-detaisl/${item._id}`}><button className="btn btn-secondary btn-sm">View Package</button></Link>
 							</div>
 						</div>
-					</div>)}
+					</div>)
+					}
+					</div>
 					
+				</TabPanel>
+				<TabPanel>
+
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+						{data.map(item => <div key={item._id} className="card bg-base-100 shadow-xl">
+							<figure className="px-10 pt-10">
+								<img src={item.profile} alt="Shoes" className="rounded-full h-28 w-28" />
+							</figure>
+							<div className="card-body items-center text-center">
+								<h2 className="card-title">{item.name}</h2>
+								<p>{item.education}</p>
+								<div className="card-actions">
+									<Link to={`/guide-details/${item._id}`}><button className="btn btn-secondary btn-sm">Details</button></Link>
+								</div>
+							</div>
+						</div>)}
+
 					</div>
 				</TabPanel>
 			</Tabs>

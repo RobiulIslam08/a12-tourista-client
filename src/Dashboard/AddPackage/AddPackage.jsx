@@ -1,11 +1,11 @@
 import Swal from "sweetalert2";
-import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
+
 import useAxiosSecure from "../../Pages/hooks/useAxiosSecure";
 
 
 const AddPackage = () => {
     // const [axiosSecure] = useAxiosSecure();
-    const axiosCommon = useAxiosCommon()
+
     const axiosSecure = useAxiosSecure()
      
 
