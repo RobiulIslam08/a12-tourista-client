@@ -92,7 +92,7 @@ const Navbar = () => {
           {user ? (
             <div className="dropdown dropdown-end">
               <div className="w-10 h-10" tabIndex={0}>
-                <img className="rounded-full" src={user.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="profile" />
+                <img className="rounded-full" src={user?.photoURL || "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} alt="profile" />
               </div>
               <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box">
                 <li><Link to='/dashboard/my-profile'>Dashboard</Link></li>

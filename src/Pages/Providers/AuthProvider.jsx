@@ -5,6 +5,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged,
 import { GithubAuthProvider } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 import axios from "axios";
+import useAxiosCommon from "../hooks/useAxiosCommon";
 // import { auth } from "../firebase/firebase.config";
 // import { auth } from "../../firebase/firebase.config";
 // import { auth } from "../firebase/firebase.config";
@@ -19,6 +20,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('')
     const [loading, setLoading] = useState(true)
     const [reload, setReload] = useState(false)
+    const axiosCommon =useAxiosCommon()
 
     // save user
     const saveUser = async (user) =>{
@@ -37,11 +39,26 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
             if(currentUser){
                 saveUser(currentUser)
+                // get token and stored client
+				const userInfo = {email: currentUser.email}
+				axiosCommon.post('/jwt', userInfo)
+				.then(res =>{
+					// console.log(res.data)
+					if(res.data.token){
+						localStorage.setItem('access-token', res.data.token)
+						setLoading(false)
+					}
+				})
             }
-            setLoading(false)
+            else{
+				// todo: remove token (if token stored in the client side : locla storage , caching, inmemory)
+				localStorage.removeItem('access-token')
+				setLoading(false)
+			}
+           
         })
         return () => unSubscribe()
-    }, [reload])
+    }, [reload,axiosCommon])
 
     const createUser = (email, password) => {
         setLoading(true)

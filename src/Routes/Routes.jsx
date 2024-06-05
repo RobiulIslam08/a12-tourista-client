@@ -6,6 +6,7 @@ import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Profile from "../Dashboard/Common/Profile";
 import GuideDetails from "../Pages/GuideDetails/GuideDetails";
+import AddPackage from "../Dashboard/AddPackage/AddPackage";
 
 export const router = createBrowserRouter([
 	{
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
 				{
 					path: 'my-profile',
 					element: <Profile></Profile>
+				},
+				{
+					path: 'add-package',
+					element: <AddPackage></AddPackage>
 				}
 			
 		]
