@@ -39,11 +39,16 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import useAuth from "../../Pages/hooks/useAuth";
-
+import { useState } from "react";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 const PackageDetails = () => {
 	const axiosCommon = useAxiosCommon();
-	const {user} = useAuth()
 	const { id } = useParams();
+	const { user } = useAuth()
+	const [StartTourDate, setStartTourDate] = useState(new Date());
+	const [EndTourDate, setEndTourDate] = useState(new Date());
+	const [selectedGuide, setSelectedGuide] = useState("");
 
 	// tour guide data get from db
 	const { data: guides = [] } = useQuery({
@@ -53,6 +58,26 @@ const PackageDetails = () => {
 			return data;
 		}
 	})
+
+	const handleBooking = (event) => {
+		event.preventDefault();
+		// Handle booking logic here
+		const form = event.target;
+		const packageName = form.packageName.value;
+		const touristName = form.touristName.value;
+		const price = form.price.value;
+		const touristImage = form.touristImage.value;
+		const touristEmail = form.touristEmail.value;
+		let status = 'Review';
+	
+		// Convert dates to readable format
+		const formattedStartTourDate = StartTourDate.toLocaleDateString();
+		const formattedEndTourDate = EndTourDate.toLocaleDateString();
+		console.table({ packageName, touristEmail, touristImage, touristName, price, StartTourDate:formattedStartTourDate, EndTourDate:formattedEndTourDate, status, selectedGuide })
+
+
+
+	};
 
 
 
@@ -107,13 +132,13 @@ const PackageDetails = () => {
 			{/* tour plane */}
 			<div>
 				<p className="text-center font-bold underline text-xl md:text-2xl my-14">Tour Plane</p>
-				<p className=""><span className="bg-fuchsia-500 text-black px-2 rounded-md font-semibold">Day 1:</span></p>
+				<p className=""><span className="bg-fuchsia-400 text-black px-2 rounded-md font-semibold">Day 1:</span></p>
 				<p className="mb-3">{data?.day1}</p>
-				<p ><span className="bg-fuchsia-500 text-black px-2 rounded-md font-semibold">Day 2:</span></p>
+				<p ><span className="bg-fuchsia-400 text-black px-2 rounded-md font-semibold">Day 2:</span></p>
 				<p className="mb-3">{data?.day2}</p>
-				<p ><span className="bg-fuchsia-500 text-black px-2 rounded-md font-semibold">Day 3:</span></p>
+				<p ><span className="bg-fuchsia-400 text-black px-2 rounded-md font-semibold">Day 3:</span></p>
 				<p className="mb-3">{data?.day3}</p>
-				<p ><span className="bg-fuchsia-500 text-black px-2 rounded-md font-semibold">Day 4:</span></p>
+				<p ><span className="bg-fuchsia-400 text-black px-2 rounded-md font-semibold">Day 4:</span></p>
 				<p className="mb-3">{data?.day4}</p>
 				<p className=" font-bold mb-14"> --End Of Tour--</p>
 			</div>
@@ -148,12 +173,12 @@ const PackageDetails = () => {
 											</div>
 											<div>
 												<div className="font-bold">{guide?.name}</div>
-											
+
 											</div>
 										</div>
 									</td>
 									<td>
-										
+
 										{guide?.workExperience}
 									</td>
 									<td>{guide?.phone}</td>
@@ -172,7 +197,82 @@ const PackageDetails = () => {
 			</div>
 
 			{/* booking form here */}
-			
+			<h2 className="text-2xl font-bold mb-6 text-center my-20">Book Your Tour</h2>
+			<div className="max-w-2xl mx-auto my-10 p-6 bg-fuchsia-300 rounded-lg shadow-md">
+				<form onSubmit={handleBooking}>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Name of the Package</span>
+						</label>
+						<input type="text" defaultValue={data?.tourType} name="packageName" readOnly className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Tourist Name</span>
+						</label>
+						<input type="text" value={user?.displayName} name="touristName" readOnly className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Tourist Email</span>
+						</label>
+						<input type="email" value={user?.email} readOnly name="touristEmail" className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Tourist Image URL</span>
+						</label>
+						<input type="text" value={user?.photoURL} readOnly name="touristImage" className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Price (USD)</span>
+						</label>
+						<input type="text" value={data?.price} readOnly name="price" className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Tour Start Date</span>
+						</label>
+						<ReactDatePicker
+							selected={StartTourDate}
+							onChange={(date) => setStartTourDate(date)}
+							className="input input-bordered w-full"
+						/>
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Tour End Date</span>
+						</label>
+						<ReactDatePicker
+							selected={EndTourDate}
+							onChange={(date) => setEndTourDate(date)}
+							className="input input-bordered w-full"
+						/>
+					</div>
+					<div className="form-control mb-6">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Tour Guide</span>
+						</label>
+						{/* <select className="select select-bordered w-full">
+							{guides.map((guide) => (
+								<option key={guide.id} value={guide.name}>
+									{guide.name}
+								</option>
+							))}
+						</select> */}
+						<select className="select select-bordered w-full" onChange={(e) => setSelectedGuide(e.target.value)}>
+							<option value="">Select a guide</option>
+							{guides.map((guide) => (
+								<option key={guide._id} value={guide.name}>
+									{guide.name}
+								</option>
+							))}
+						</select>
+					</div>
+					<button type="submit" className="btn btn-primary w-full">Book Now</button>
+				</form>
+			</div>
 		</div>
 	);
 };

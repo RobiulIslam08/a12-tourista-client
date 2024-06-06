@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Dashboard/Sidebar";
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -14,6 +15,7 @@ const DashboardLayout = () => {
 			{/* dynamic content for outlet */}
 			<div className="flex-1">
 				<div className="p-5"> 
+				<ToastContainer></ToastContainer>
 				<Outlet></Outlet>
 				</div>
 			
