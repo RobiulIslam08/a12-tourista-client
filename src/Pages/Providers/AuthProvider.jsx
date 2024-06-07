@@ -18,6 +18,7 @@ export const AuthContext = createContext('')
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState('')
+    console.log( 'first user data',user)
     const [loading, setLoading] = useState(true)
     const [reload, setReload] = useState(false)
     const axiosCommon =useAxiosCommon()
@@ -27,10 +28,20 @@ const AuthProvider = ({ children }) => {
         const currentUser = {
             email: user?.email,
             role: 'Tourist',
-            status: 'Verified'
+            status: 'Verified',
+            
+           
+
+        
         }
-        const {data} = await axios.put(`${import.meta.env.VITE_API_URL}/user`, currentUser)
-        return data
+      
+        console.log('current user', currentUser)
+        if(currentUser){
+            const {data} = await axios.put(`${import.meta.env.VITE_API_URL}/user`, currentUser)
+            return data
+        }
+       
+       
     }
 
     useEffect(() => {
@@ -40,14 +51,18 @@ const AuthProvider = ({ children }) => {
             if(currentUser){
                 saveUser(currentUser)
                 // get token and stored client
-				const userInfo = {email: currentUser.email}
+				const userInfo = {
+                    email: currentUser.email,
+                  
+
+                }
 				axiosCommon.post('/jwt', userInfo)
 				.then(res =>{
 					// console.log(res.data)
 					if(res.data.token){
 						localStorage.setItem('access-token', res.data.token)
-						setLoading(false)
 					}
+                    setLoading(false)
 				})
             }
             else{
@@ -59,6 +74,7 @@ const AuthProvider = ({ children }) => {
         })
         return () => unSubscribe()
     }, [reload,axiosCommon])
+   
 
     const createUser = (email, password) => {
         setLoading(true)
@@ -106,7 +122,7 @@ const AuthProvider = ({ children }) => {
         loginUser,
         logOut,
         loading,
-        updateUserProfile,
+       
         setReload
     }
     return (

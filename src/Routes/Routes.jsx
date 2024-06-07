@@ -9,6 +9,7 @@ import GuideDetails from "../Pages/GuideDetails/GuideDetails";
 import AddPackage from "../Dashboard/AddPackage/AddPackage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PackageDetails from "./PackageDetails/PackageDetails";
+import ManageUser from "../Dashboard/ManageUser/ManageUser";
 
 export const router = createBrowserRouter([
 	{
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
 				{
 					path: 'add-package',
 					element: <AddPackage></AddPackage>
+				},
+				{
+					path: 'manage-users',
+					element: <ManageUser></ManageUser>
 				}
 			
 		]
