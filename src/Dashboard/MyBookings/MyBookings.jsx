@@ -77,10 +77,10 @@ const MyBookings = () => {
 								</td>
 								<td>{item?.StartTourDate}</td>
 								<td>{item?.EndTourDate}</td>
-								<td>{item?.price}</td>
+								<td>{item?.price}$</td>
 								<td>{item?.status}</td>
-								<td><button className="btn btn-sm text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></td>
-								<td><button onClick={() => handleDelete(item?._id)} className="btn btn-sm text-black btn-error">Cencel</button></td>
+								<th><button className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></th>
+								<th><button onClick={() => handleDelete(item?._id)} className="btn btn-xs btn-error">Cencel</button></th>
 
 							</tr>)
 						}

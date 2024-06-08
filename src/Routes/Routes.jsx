@@ -11,6 +11,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PackageDetails from "./PackageDetails/PackageDetails";
 import ManageUser from "../Dashboard/ManageUser/ManageUser";
 import MyBookings from "../Dashboard/MyBookings/MyBookings";
+import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
 	{
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
 				{
 					path: 'my-bookings',
 					element: <MyBookings></MyBookings>
+				},
+				{
+					path: 'my-assigned-tour',
+					element: <AssignTour></AssignTour>
 				}
 			
 		]
