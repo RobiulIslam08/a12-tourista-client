@@ -1,5 +1,5 @@
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 
 
@@ -13,6 +13,7 @@ const ManageUser = () => {
 		}
 	})
 	// updata user role
+	
 	
 	const updateUserRole =async (role, updateUserEmail) =>{
 		console.log('update this role',role, updateUserEmail )

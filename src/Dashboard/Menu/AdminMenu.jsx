@@ -4,6 +4,7 @@ import { BsFillHouseAddFill } from "react-icons/bs";
 
 
 const AdminMenu = () => {
+	
 	return (
 		<div>
 			<MenuItem icon={FaUser} label='My Profile' address='my-profile'></MenuItem>

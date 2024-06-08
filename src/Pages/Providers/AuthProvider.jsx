@@ -18,63 +18,63 @@ export const AuthContext = createContext('')
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState('')
-    console.log( 'first user data',user)
+    console.log('first user data', user)
     const [loading, setLoading] = useState(true)
     const [reload, setReload] = useState(false)
-    const axiosCommon =useAxiosCommon()
+    const axiosCommon = useAxiosCommon()
 
     // save user
-    const saveUser = async (user) =>{
+    const saveUser = async (user) => {
         const currentUser = {
             email: user?.email,
             role: 'Tourist',
             status: 'Verified',
-            
-           
 
-        
+
+
+
         }
-      
+
         console.log('current user', currentUser)
-        if(currentUser){
-            const {data} = await axios.put(`${import.meta.env.VITE_API_URL}/user`, currentUser)
+        if (currentUser) {
+            const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/user`, currentUser)
             return data
         }
-       
-       
+
+
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser)
             setUser(currentUser)
-            if(currentUser){
+            if (currentUser) {
                 saveUser(currentUser)
                 // get token and stored client
-				const userInfo = {
+                const userInfo = {
                     email: currentUser.email,
-                  
+
 
                 }
-				axiosCommon.post('/jwt', userInfo)
-				.then(res =>{
-					// console.log(res.data)
-					if(res.data.token){
-						localStorage.setItem('access-token', res.data.token)
-					}
-                    setLoading(false)
-				})
+                axiosCommon.post('/jwt', userInfo)
+                    .then(res => {
+                        // console.log(res.data)
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token)
+                        }
+                        setLoading(false)
+                    })
             }
-            else{
-				// todo: remove token (if token stored in the client side : locla storage , caching, inmemory)
-				localStorage.removeItem('access-token')
-				setLoading(false)
-			}
-           
+            else {
+                // todo: remove token (if token stored in the client side : locla storage , caching, inmemory)
+                localStorage.removeItem('access-token')
+                setLoading(false)
+            }
+
         })
         return () => unSubscribe()
-    }, [reload,axiosCommon])
-   
+    }, [reload, axiosCommon])
+
 
     const createUser = (email, password) => {
         setLoading(true)
@@ -88,13 +88,13 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signOut(auth)
     }
-    
-  const updateUserProfile = (name, photo) => {
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    })
-  }
+
+    const updateUserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo,
+        })
+    }
     // const logOut = async () => {
     //     setLoading(true)
     //     await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
@@ -108,7 +108,7 @@ const AuthProvider = ({ children }) => {
     const signWithGithub = () => {
         return signInWithPopup(auth, githubProvider)
     }
-  
+
 
 
 
@@ -122,7 +122,7 @@ const AuthProvider = ({ children }) => {
         loginUser,
         logOut,
         loading,
-       
+
         setReload
     }
     return (

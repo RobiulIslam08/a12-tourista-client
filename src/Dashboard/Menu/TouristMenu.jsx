@@ -49,10 +49,11 @@ const TouristMenu = () => {
 			}
 		});
 	}
+	
 	return (
 		<div>
 			<MenuItem icon={FaUser} label='My Profile' address='/dashboard/my-profile'></MenuItem>
-			<MenuItem icon={FaCartPlus} label='My Booking' address='my-booking'></MenuItem> 
+			<MenuItem icon={FaCartPlus} label='My Booking' address='my-bookings'></MenuItem> 
 			<MenuItem icon={MdChecklistRtl} label='My Wishlist' address='my-wishlist'></MenuItem>
 			{/* <MenuItem icon={VscGitPullRequestGoToChanges} label='Request to Admin' address='Request-admin'></MenuItem> */}
 			<button className="btn btn-secondary btn-sm" onClick={handleRequesttoAdmin}>Request To Admin</button>

@@ -1,47 +1,12 @@
-// import { useQuery } from "@tanstack/react-query";
-// import { useParams } from "react-router-dom";
-// import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 
-
-// const PackageDetails = () => {
-// 	const axiosCommon = useAxiosCommon()
-// 	const { id } = useParams()
-// 	const { data = [], isLoading, error } = useQuery({
-// 		queryKey: ['package-details'],
-// 		queryFn: async () => {
-// 			const { data } = await axiosCommon.get(`/package-detaisl/${id}`)
-// 			return data
-// 		}
-// 	})
-// 	if (isLoading) {
-// 		return <div className="text-center text-lg">Loading...</div>;
-// 	}
-
-// 	if (error) {
-// 		return <div className="text-center text-lg text-red-500">Error loading package details.</div>;
-// 	}
-// 	return (
-// 		<div>
-// 			{/* gallary img */}
-// 			<div className="flex flex-col ">
-// 				<div className=""><img src={data.gallery1} className="" alt="" /></div>
-// 				<div className="flex ">
-// 					<div><img src={data.gallery1} className=" flex-1" alt="" /></div>
-// 					<div><img src={data.gallery1} className=" flex-1" alt="" /></div>
-// 				</div>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default PackageDetails;
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import useAuth from "../../Pages/hooks/useAuth";
 import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 const PackageDetails = () => {
 	const axiosCommon = useAxiosCommon();
 	const { id } = useParams();
@@ -49,7 +14,7 @@ const PackageDetails = () => {
 	const [StartTourDate, setStartTourDate] = useState(new Date());
 	const [EndTourDate, setEndTourDate] = useState(new Date());
 	const [selectedGuide, setSelectedGuide] = useState("");
-
+	const navigate = useNavigate()
 	// tour guide data get from db
 	const { data: guides = [] } = useQuery({
 		queryKey: ['guidee'],
@@ -69,13 +34,44 @@ const PackageDetails = () => {
 		const touristImage = form.touristImage.value;
 		const touristEmail = form.touristEmail.value;
 		let status = 'Review';
-	
+
 		// Convert dates to readable format
 		const formattedStartTourDate = StartTourDate.toLocaleDateString();
 		const formattedEndTourDate = EndTourDate.toLocaleDateString();
-		console.table({ packageName, touristEmail, touristImage, touristName, price, StartTourDate:formattedStartTourDate, EndTourDate:formattedEndTourDate, status, selectedGuide })
+		console.table({ packageName, touristEmail, touristImage, touristName, price, StartTourDate: formattedStartTourDate, EndTourDate: formattedEndTourDate, status, selectedGuide })
+		const bookingData = { packageName, touristEmail, touristImage, touristName, price, StartTourDate: formattedStartTourDate, EndTourDate: formattedEndTourDate, status, selectedGuide }
+		// book data added in db when click book now btn
+		Swal.fire({
+			title: "Are you confirm booking this package?",
+		
+			icon: "question",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, I confirmed"
+		}).then(async (result) => {
+			if (result.isConfirmed) {
+
+				axiosCommon.post('/add-booking', bookingData)
+					.then(res => {
 
 
+						if (res.data.insertedId) {
+							console.log(res.data)
+							Swal.fire({
+								title: "Booked",
+								text: "Your package is booked",
+								icon: "success"
+							}).then(() => {
+
+								navigate('/dashboard/my-bookings')
+							})
+
+						}
+					})
+
+			}
+		});
 
 	};
 

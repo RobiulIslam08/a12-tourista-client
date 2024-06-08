@@ -10,6 +10,7 @@ import AddPackage from "../Dashboard/AddPackage/AddPackage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PackageDetails from "./PackageDetails/PackageDetails";
 import ManageUser from "../Dashboard/ManageUser/ManageUser";
+import MyBookings from "../Dashboard/MyBookings/MyBookings";
 
 export const router = createBrowserRouter([
 	{
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
 				{
 					path: 'manage-users',
 					element: <ManageUser></ManageUser>
+				},
+				{
+					path: 'my-bookings',
+					element: <MyBookings></MyBookings>
 				}
 			
 		]
