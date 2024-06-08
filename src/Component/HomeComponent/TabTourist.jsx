@@ -8,9 +8,12 @@ import 'react-tabs/style/react-tabs.css';
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
+import { toast } from "react-toastify";
+import useAuth from "../../Pages/hooks/useAuth";
 
 const TabTourist = () => {
 	const [tabIndex, setTabIndex] = useState(0);
+	const {user} = useAuth()
 	const axiosCommon = useAxiosCommon()
 	const { data = [] } = useQuery({
 		queryKey: ['guideInfo'],
@@ -27,6 +30,23 @@ const TabTourist = () => {
 			return data
 		}
 	})
+
+	const handleWishlist =async (tourType, tripTitle,price,spotPhoto) => {
+		const userEmail = user?.email
+		const packageInfo = {tourType, tripTitle,price,spotPhoto, userEmail}
+
+		try{
+			const {data} = await axiosCommon.post(`/wishlist`,packageInfo)
+			console.log(data)
+			if(data.insertedId){
+				toast.success('has been added to the wishlist')
+			}
+			return data
+		}
+		catch(err){
+			console.log(err)
+		}
+	}
 	return (
 		<div className="my-40 px-4 sm:px-6 lg:px-8">
 			<div>
@@ -76,17 +96,17 @@ const TabTourist = () => {
 				<TabPanel>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
 					{
-						Package.map(item => <div key={item._id} className="card  bg-base-100 shadow-xl">
+						Package.map(item => <div key={item?._id} className="card  bg-base-100 shadow-xl">
 						<figure>
 							<img src={item.spotPhoto} alt="Shoes" />
 						</figure>
-							<FaHeart className="text-fuchsia-600 text-2xl hover:text-pink-600 absolute right-4  top-4"/>
+							<FaHeart onClick={()=>handleWishlist(item?.tourType,item?.tripTitle,item?.price,item.spotPhoto)} className="text-fuchsia-600 text-2xl hover:text-pink-600 absolute right-4  top-4"/>
 						<div className="card-body">
-							<h2 className="text-xl font-bold">{item.tourType}</h2>
-							<p className="">{item.tripTitle}</p>
-							<p >Price: {item.price}$</p>
+							<h2 className="text-xl font-bold">{item?.tourType}</h2>
+							<p className="">{item?.tripTitle}</p>
+							<p >Price: {item?.price}$</p>
 							<div className="card-actions justify-start">
-								<Link to={`/package-detaisl/${item._id}`}><button className="btn btn-secondary btn-sm">View Package</button></Link>
+								<Link to={`/package-detaisl/${item?._id}`}><button className="btn btn-secondary btn-sm">View Package</button></Link>
 							</div>
 						</div>
 					</div>)

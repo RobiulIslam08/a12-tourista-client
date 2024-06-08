@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 
 const MyBookings = () => {
 	const { user } = useAuth()
+
 	const axiosCommon = useAxiosCommon()
 	const { data = [], refetch } = useQuery({
 		queryKey: ['booking-data', user?.email],
@@ -79,8 +80,10 @@ const MyBookings = () => {
 								<td>{item?.EndTourDate}</td>
 								<td>{item?.price}$</td>
 								<td>{item?.status}</td>
-								<th><button className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></th>
-								<th><button onClick={() => handleDelete(item?._id)} className="btn btn-xs btn-error">Cencel</button></th>
+								<th><button disabled={item?.status !== 'Accepted'} className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></th>
+								{
+									item?.status =='Review' && <><th><button onClick={() => handleDelete(item?._id)} className="btn btn-xs btn-error">Cencel</button></th></>
+								}
 
 							</tr>)
 						}
