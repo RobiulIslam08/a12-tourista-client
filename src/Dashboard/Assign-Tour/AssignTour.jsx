@@ -1,27 +1,43 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Pages/hooks/useAuth";
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
+import { toast } from "react-toastify";
 
 
 const AssignTour = () => {
 	const { user } = useAuth()
 	const axiosCommon = useAxiosCommon()
-	const { data } = useQuery({
+	const { data = [] } = useQuery({
 		queryKey: ['assigned-tour', user?.email],
 		queryFn: async () => {
 			const { data } = await axiosCommon.get(`/assigned-tour/${user.displayName}`)
 			return data
 		}
 	})
+	const handleStatus = async (status, id) => {
+		console.log(status, id)
+		const updateInfo = { status }
+		try {
+			const { data } = await axiosCommon.patch(`/update-status/${id}`, updateInfo)
+			console.log(data)
+			if(data.modifiedCount > 0){
+				toast.success('successfully updated')
+			}
+			return data
+		}
+		catch (err) {
+			console.log(err)
+		}
+	}
 	return (
 		<div>
-			<p>data length {data?.length}</p>
+			<p className="text-center text-lg md:text-2xl lg:text-3xl font-bold my-14">My Assigned Tour</p>
 			<div className="overflow-x-auto">
 				<table className="table">
 					{/* head */}
 					<thead>
 						<tr>
-							
+
 							<th>Package Name</th>
 							<th>Tourist Name</th>
 							<th>Tour Start Date</th>
@@ -30,12 +46,12 @@ const AssignTour = () => {
 						</tr>
 					</thead>
 					<tbody>
-					
+
 						{
 							data.map(item => <tr key={item?._id}>
-							
+
 								<td>
-								{item?.packageName}
+									{item?.packageName}
 								</td>
 
 								<td>{item?.touristName}</td>
@@ -43,10 +59,10 @@ const AssignTour = () => {
 								<td>{item?.EndTourDate}</td>
 								<td>{item?.price}$</td>
 								<th>
-									<button className="btn  text-black bg-[#f472b6] hover:bg-[#f355a7] btn-xs">Accepted</button>
+									<button onClick={() => handleStatus('Accepted', item?._id)} className="btn  text-black bg-[#f472b6] hover:bg-[#f355a7] btn-xs">Accepted</button>
 								</th>
 								<th>
-									<button className="btn btn-error btn-xs">Rejected</button>
+									<button onClick={() => handleStatus('Rejected', item?._id)} className="btn btn-error btn-xs">Rejected</button>
 								</th>
 							</tr>)
 						}
