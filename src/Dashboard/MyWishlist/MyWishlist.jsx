@@ -81,7 +81,7 @@ const MyWishlist = () => {
           </td>
           <td>{item?.tripTitle}</td>
           <td>{item?.price}$</td>
-          <th><Link Link to={`/package-detaisl/${item?._id}`}><button  className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Visit Details</button></Link></th>
+          <th><Link Link to={`/package-detaisl/${item?.id}`}><button  className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Visit Details</button></Link></th>
           <th><button onClick={() => handleDelete(item?._id)} className="btn btn-xs btn-error">Delete</button></th>
         </tr>)
       }

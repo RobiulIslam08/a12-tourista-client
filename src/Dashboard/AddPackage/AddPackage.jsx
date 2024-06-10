@@ -1,13 +1,17 @@
 import Swal from "sweetalert2";
 
 import useAxiosSecure from "../../Pages/hooks/useAxiosSecure";
+import { useState } from "react";
 
 
 const AddPackage = () => {
     // const [axiosSecure] = useAxiosSecure();
+    const [tourType, setTourType] = useState('')
 
     const axiosSecure = useAxiosSecure()
-     
+     const TourTypes = [
+        "City", "Wildlife", "Cultural","Adventure", "Historical", "Beach"
+     ]
 
   
 
@@ -16,7 +20,7 @@ const AddPackage = () => {
         e.preventDefault();
         const form = e.target;
         const spotPhoto = form.spotPhoto.value;
-        const tourType = form.tourType.value;
+        // const tourType = form.tourType.value;
         const tripTitle = form.tripTitle.value;
         const price = form.price.value;
         const description = form.description.value;
@@ -70,15 +74,21 @@ const AddPackage = () => {
                     <label className="block text-gray-700 font-bold mb-2" htmlFor="tourType">
                         Tour Type
                     </label>
-                    <input
+                    {/* <input 
                         type="text"
                         id="tourType"
                         name="tourType"
                  
                         className="w-full px-3 py-2 border rounded"
                         required
-                    />
-                </div>
+                    /> */}
+                    <select className="select w-full select-bordered" onChange={(e) => {setTourType(e.target.value)}}>
+                        <option value="">select a tour type</option>
+                        {
+                            TourTypes.map((type, index) => <option key={index} value={type}>{type}</option>)
+                        }
+                    </select>
+                </div> 
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2" htmlFor="tripTitle">
                         Trip Title

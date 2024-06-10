@@ -31,9 +31,10 @@ const TabTourist = () => {
 		}
 	})
 
-	const handleWishlist =async (tourType, tripTitle,price,spotPhoto) => {
+	const handleWishlist =async (id,tourType, tripTitle,price,spotPhoto) => {
 		const userEmail = user?.email
-		const packageInfo = {tourType, tripTitle,price,spotPhoto, userEmail}
+		const packageInfo = {id,tourType, tripTitle,price,spotPhoto, userEmail}
+		
 
 		try{
 			const {data} = await axiosCommon.post(`/wishlist`,packageInfo)
@@ -100,7 +101,7 @@ const TabTourist = () => {
 						<figure>
 							<img src={item.spotPhoto} alt="Shoes" />
 						</figure>
-							<FaHeart onClick={()=>handleWishlist(item?.tourType,item?.tripTitle,item?.price,item.spotPhoto)} className="text-fuchsia-600 text-2xl hover:text-pink-600 absolute right-4  top-4"/>
+							<FaHeart onClick={()=>handleWishlist(item?._id,item?.tourType,item?.tripTitle,item?.price,item.spotPhoto)} className="text-fuchsia-600 text-2xl hover:text-pink-600 absolute right-4  top-4"/>
 						<div className="card-body">
 							<h2 className="text-xl font-bold">{item?.tourType}</h2>
 							<p className="">{item?.tripTitle}</p>

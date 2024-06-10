@@ -13,6 +13,7 @@ import ManageUser from "../Dashboard/ManageUser/ManageUser";
 import MyBookings from "../Dashboard/MyBookings/MyBookings";
 import AssignTour from "../Dashboard/Assign-Tour/AssignTour";
 import MyWishlist from "../Dashboard/MyWishlist/MyWishlist";
+import TourTypePage from "../Component/HomeComponent/TourTypePage/TourTypePage";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'package-detaisl/:id',
 				element: <PackageDetails></PackageDetails>
+			},
+			{
+				path: 'TourTypePage/:typeName',
+				element: <TourTypePage></TourTypePage>
 			}
 		]
 	},

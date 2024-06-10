@@ -250,13 +250,7 @@ const PackageDetails = () => {
 						<label className="label">
 							<span className="label-text text-black font-semibold">Tour Guide</span>
 						</label>
-						{/* <select className="select select-bordered w-full">
-							{guides.map((guide) => (
-								<option key={guide.id} value={guide.name}>
-									{guide.name}
-								</option>
-							))}
-						</select> */}
+						
 						<select className="select select-bordered w-full" onChange={(e) => setSelectedGuide(e.target.value)}>
 							<option value="">Select a guide</option>
 							{guides.map((guide) => (
