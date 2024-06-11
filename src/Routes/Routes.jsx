@@ -14,6 +14,10 @@ import MyBookings from "../Dashboard/MyBookings/MyBookings";
 import AssignTour from "../Dashboard/Assign-Tour/AssignTour";
 import MyWishlist from "../Dashboard/MyWishlist/MyWishlist";
 import TourTypePage from "../Component/HomeComponent/TourTypePage/TourTypePage";
+import Community from "../Pages/Community/Community";
+import Blogs from "../Pages/Blogs/Blogs";
+import ContactUs from "../Pages/ContactUs/ContactUs";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
@@ -45,6 +49,24 @@ export const router = createBrowserRouter([
 			{
 				path: 'TourTypePage/:typeName',
 				element: <TourTypePage></TourTypePage>
+			},
+			{
+				path: 'community',
+				element: <Community></Community>
+			},
+			{
+				path: 'blogs',
+				element: <Blogs></Blogs>,
+			},
+
+			{
+				path: 'contact-us',
+				element: <ContactUs></ContactUs>,
+			},
+			{
+				path: 'about-us',
+				element: <AboutUs></AboutUs>,
+				
 			}
 		]
 	},

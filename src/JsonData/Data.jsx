@@ -603,27 +603,3 @@
 ]
 
 
-// select tour guide
-// const axiosCommon = useAxiosCommon()
-
-// 	const {data = []} =  useQuery({
-// 		queryKey: ['guideInfo'],
-// 		queryFn: async () =>{
-// 			const {data} = await axiosCommon.get('/guideInfo')
-// 			return data.email
-// 		}
-// 	})
-{/* <div className="mb-4">
-                    <label className="block text-gray-700 font-bold mb-2" htmlFor="tourGuides">
-                        Tour Guides (comma-separated)
-                    </label>
-                    <input
-                        type="text"
-                        id="tourGuides"
-                        name="tourGuides"
-                 
-                    
-                        className="w-full px-3 py-2 border rounded"
-                        required
-                    />
-                </div> */}

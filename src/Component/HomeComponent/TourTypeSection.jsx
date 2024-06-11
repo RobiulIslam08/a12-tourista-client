@@ -8,12 +8,12 @@ import { MdManageHistory } from "react-icons/md";
 import { FaUmbrellaBeach } from "react-icons/fa6";
 const TourTypeSection = () => {
     const tourTypes = [
-        { name: 'City', icon: <FaCity className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: "https://example.com/photo6.jpg" },
-        { name: 'Wildlife', icon: <GiForest className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: "https://example.com/photo5.jpg" },
-        { name: 'Cultural', icon: <MdOutlineAgriculture className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: "https://example.com/photo4.jpg" },
-        { name: 'Adventure', icon: <SiAdventofcode className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: ' "https://example.com/photo3.jpg"' },
-        { name: 'Historical', icon: <MdManageHistory className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: 'https://example.com/photo2.jpg' },
-        { name: 'Beach', icon: <FaUmbrellaBeach className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: 'https://i.ibb.co/30N26nq/sea-beach.jpg' },
+        { name: 'City', icon: <FaCity className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: "https://i.ibb.co/gZfL097/c1c86e3f049aff77bf9df150089f9965.jpg" },
+        { name: 'Wildlife', icon: <GiForest className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: "https://i.ibb.co/Kjhhhvw/beautiful-shot-tree-savanna-plains-with-blue-sky.jpg" },
+        { name: 'Cultural', icon: <MdOutlineAgriculture className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: "https://i.ibb.co/5F2Ngd7/agriculture-hilltribe-women.jpg" },
+        { name: 'Adventure', icon: <SiAdventofcode className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: ' "https://i.ibb.co/1n7hNYB/hiking-men-conquer-mountain-peak-adventure-awaits-generative-ai.jpg"' },
+        { name: 'Historical', icon: <MdManageHistory className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: 'https://i.ibb.co/2qdJJ2K/aphrodisias-ancient-city-turkey.jpg' },
+        { name: 'Beach', icon: <FaUmbrellaBeach className="flex justify-center items-center text-fuchsia-600 text-center w-full text-lg" />, image: 'https://i.ibb.co/HgcFccK/riashat-rafat-Ph5-VL5-Tilto-unsplash.jpg' },
     ];
     
 

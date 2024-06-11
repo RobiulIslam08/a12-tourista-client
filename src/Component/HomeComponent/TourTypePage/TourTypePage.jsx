@@ -23,14 +23,14 @@ const TourTypePage = () => {
 
 	return (
 		<div>
-			Tour type
+			<p className="text-lg md:text-2xl lg:text-3xl font-bold text-center my-14">Tour Type {typeName}</p>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-					{
-						Package.map(item => <div key={item?._id} className="card  bg-base-100 shadow-xl">
+				{
+					Package.map(item => <div key={item?._id} className="card  bg-base-100 shadow-xl">
 						<figure>
 							<img src={item.spotPhoto} alt="Shoes" />
 						</figure>
-							
+
 						<div className="card-body">
 							<h2 className="text-xl font-bold">{item?.tourType}</h2>
 							<p className="">{item?.tripTitle}</p>
@@ -40,8 +40,8 @@ const TourTypePage = () => {
 							</div>
 						</div>
 					</div>)
-					}
-					</div>
+				}
+			</div>
 		</div>
 	);
 };
