@@ -81,7 +81,7 @@ const MyBookings = () => {
 								<td>{item?.EndTourDate}</td>
 								<td>{item?.price}$</td>
 								<td>{item?.status}</td>
-								<th><Link to='/dashboard/payment'><button disabled={item?.status !== 'Accepted'} className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></Link></th>
+								<th><Link to={`/dashboard/payment/${item?.price}`} payment={item?.price}><button disabled={item?.status !== 'Accepted'} className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></Link></th>
 								{
 									item?.status =='Review' && <><th><button onClick={() => handleDelete(item?._id)} className="btn btn-xs btn-error">Cencel</button></th></>
 								}
