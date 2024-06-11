@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import useAuth from "../../Pages/hooks/useAuth";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 
@@ -80,7 +81,7 @@ const MyBookings = () => {
 								<td>{item?.EndTourDate}</td>
 								<td>{item?.price}$</td>
 								<td>{item?.status}</td>
-								<th><button disabled={item?.status !== 'Accepted'} className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></th>
+								<th><Link to='/dashboard/payment'><button disabled={item?.status !== 'Accepted'} className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></Link></th>
 								{
 									item?.status =='Review' && <><th><button onClick={() => handleDelete(item?._id)} className="btn btn-xs btn-error">Cencel</button></th></>
 								}

@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const AboutUs = () => {
   return (
@@ -8,7 +8,7 @@ const AboutUs = () => {
         We are a travel company dedicated to providing unforgettable experiences in Bangladesh. Explore the diverse landscapes, rich cultural heritage, and vibrant communities with our expert guides.
       </p>
       <p className="text-lg mb-6">
-        Whether you're seeking adventure in the mountains, relaxation on the beaches, or immersion in cultural wonders, we have the perfect tour for you.
+        Whether you are seeking adventure in the mountains, relaxation on the beaches, or immersion in cultural wonders, we have the perfect tour for you.
       </p>
       <h2 className="text-lg md:text-2xl lg:text-3xl text-center font-bold mb-8 mt-10 md:mt-20">Our Team</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">

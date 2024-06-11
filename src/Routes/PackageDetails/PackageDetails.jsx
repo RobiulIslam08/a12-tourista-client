@@ -1,6 +1,6 @@
 
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link,  useNavigate, useParams } from "react-router-dom";
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import useAuth from "../../Pages/hooks/useAuth";
 import { useState } from "react";
@@ -8,13 +8,16 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 const PackageDetails = () => {
+
 	const axiosCommon = useAxiosCommon();
+	
 	const { id } = useParams();
 	const { user } = useAuth()
 	const [StartTourDate, setStartTourDate] = useState(new Date());
 	const [EndTourDate, setEndTourDate] = useState(new Date());
 	const [selectedGuide, setSelectedGuide] = useState("");
 	const navigate = useNavigate()
+
 	// tour guide data get from db
 	const { data: guides = [] } = useQuery({
 		queryKey: ['guidee'],
@@ -26,6 +29,14 @@ const PackageDetails = () => {
 
 	const handleBooking = (event) => {
 		event.preventDefault();
+		if (!user) {
+			Swal.fire({
+				title: "Not Authenticated",
+				text: "Please log in to book a package",
+				icon: "warning"
+			});
+			return;
+		}
 		// Handle booking logic here
 		const form = event.target;
 		const packageName = form.packageName.value;
@@ -43,7 +54,7 @@ const PackageDetails = () => {
 		// book data added in db when click book now btn
 		Swal.fire({
 			title: "Are you confirm booking this package?",
-		
+
 			icon: "question",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
@@ -250,7 +261,7 @@ const PackageDetails = () => {
 						<label className="label">
 							<span className="label-text text-black font-semibold">Tour Guide</span>
 						</label>
-						
+
 						<select className="select select-bordered w-full" onChange={(e) => setSelectedGuide(e.target.value)}>
 							<option value="">Select a guide</option>
 							{guides.map((guide) => (

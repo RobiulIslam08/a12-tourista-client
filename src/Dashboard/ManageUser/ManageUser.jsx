@@ -1,6 +1,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
+import { toast } from "react-toastify";
 
 
 const ManageUser = () => {
@@ -29,6 +30,7 @@ const ManageUser = () => {
 		// })
 		try{
 			const {data} = await axiosCommon.patch(`/users/update/${updateUserEmail}`, user)
+			toast.success('updtae user role successfully')
 			refetch()
 			return data
 		}

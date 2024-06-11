@@ -18,6 +18,8 @@ import Community from "../Pages/Community/Community";
 import Blogs from "../Pages/Blogs/Blogs";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Payment from "../Dashboard/Payment/Payment";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
@@ -66,18 +68,22 @@ export const router = createBrowserRouter([
 			{
 				path: 'about-us',
 				element: <AboutUs></AboutUs>,
-				
+
 			}
 		]
 	},
 	{
 		path: 'dashboard',
-		element: <DashboardLayout></DashboardLayout>,
+		element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
 		children: [
 			
 				{
 					path: 'register',
 					element: <RegisterPage></RegisterPage>
+				},
+				{
+					path: 'payment',
+					element: <Payment></Payment>
 				},
 				{
 					path: 'my-profile',
