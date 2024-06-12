@@ -20,6 +20,7 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Payment from "../Dashboard/Payment/Payment";
+import StoryDetailsPage from "../Dashboard/StoryDetailsPage/StoryDetailsPage";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
 				path: 'about-us',
 				element: <AboutUs></AboutUs>,
 
+			},
+			{
+				path: 'story-details-page/:id',
+				element: <StoryDetailsPage></StoryDetailsPage>
 			}
 		]
 	},

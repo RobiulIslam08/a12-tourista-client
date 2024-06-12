@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 
 const TouristProfile = () => {
+	
 	const [tourDate, setTourDate] = useState(new Date())
 	const {user} = useAuth()
 	const axiosCommon = useAxiosCommon()
@@ -27,15 +28,17 @@ const TouristProfile = () => {
 			if (res.data.insertedId) {
 				console.log(res.data)
 				Swal.fire({
-					title: "Booked",
+					title: "Successfully",
 					text: "Your Story added",
 					icon: "success"
 				})
+				
 
 			}
 		})
 		
-
+		
+		
 	}
 	return (
 		<div>
@@ -84,7 +87,7 @@ const TouristProfile = () => {
 					</div>
 				
 					
-					<button type="submit" className="btn btn-primary w-full">Book Now</button>
+					<button type="submit" className="btn btn-primary w-full">Add Story</button>
 				</form>
 			</div>
 		
