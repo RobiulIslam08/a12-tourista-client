@@ -1,35 +1,92 @@
-
+import ReactDatePicker from "react-datepicker";
+import {useState} from 'react'
+import useAuth from "../../Pages/hooks/useAuth";
+import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
+import Swal from "sweetalert2";
 
 
 const TouristProfile = () => {
+	const [tourDate, setTourDate] = useState(new Date())
+	const {user} = useAuth()
+	const axiosCommon = useAxiosCommon()
+	const handleForm = (e) =>{
+		e.preventDefault()
+		const spotImage = e.target.spotImage.value;
+		const tourType = e.target.tourType.value;
+		const title = e.target.title.value;
+		const location = e.target.location.value;
+		const description = e.target.description.value;
+		const formateData = tourDate.toLocaleDateString()
+		const email = user?.email
+		const profile = user?.photoURL
+		const name = user?.displayName
+		console.table({email,name,profile, spotImage,description,location,title,formateData, tourType})
+		const storyInfo = {email,name,profile, spotImage,description,location,title,formateData, tourType}
+		axiosCommon.post('/story',storyInfo)
+		.then(res => {
+			if (res.data.insertedId) {
+				console.log(res.data)
+				Swal.fire({
+					title: "Booked",
+					text: "Your Story added",
+					icon: "success"
+				})
+
+			}
+		})
+		
+
+	}
 	return (
 		<div>
-			<h1 className="text-8xl font-bold text-pink-800">tourist profile</h1>
-			{/* <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-10">
-				<div className="bg-pink-500 h-32 flex items-center justify-center">
-					<div className="relative">
-						<img
-							className="w-24 h-24 rounded-full border-4 border-white -mt-12"
-							src="https://via.placeholder.com/150"
-							alt="Profile"
+			<h1 className="text-lg md:text-3xl font-bold text-center mt-20"> Add Your Story</h1>
+			<div className="max-w-2xl mx-auto my-10 p-6 bg-fuchsia-300 rounded-lg shadow-md">
+				<form onSubmit={handleForm}>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Spot Image</span>
+						</label>
+						<input type="text"  name="spotImage"  className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Tour Type</span>
+						</label>
+						<input type="text"  name="tourType"  className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Title</span>
+						</label>
+						<input type="text"  name="title"  className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Location</span>
+						</label>
+						<input type="text"  name="location" className="input input-bordered w-full" />
+					</div>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Tour Start Date</span>
+						</label>
+						<ReactDatePicker
+							selected={tourDate}
+							onChange={(date) => setTourDate(date)}
+							className="input input-bordered w-full"
 						/>
-						<span className="absolute bottom-0 right-0 bg-pink-600 text-white text-xs px-2 py-1 rounded-full">
-							ADMIN
-						</span>
 					</div>
-				</div>
-				<div className="p-6">
-					<h2 className="text-center text-xl font-semibold">Robiul Islam</h2>
-					<p className="text-center text-gray-600">robiulislamrobi0874@gmail.com</p>
-					<div className="mt-4">
-						<p className="text-center text-gray-800 font-bold">User Id: dN7hEP0kSAQIZtKnFibUke3uQa12</p>
+					<div className="form-control mb-4">
+						<label className="label">
+							<span className="label-text text-black font-semibold">Description</span>
+						</label>
+						<textarea   name="description" className="input input-bordered w-full" />
 					</div>
-					<div className="flex justify-around mt-4">
-						<button className="btn btn-primary">Update Profile</button>
-						<button className="btn btn-secondary">Change Password</button>
-					</div>
-				</div>
-			</div> */}
+				
+					
+					<button type="submit" className="btn btn-primary w-full">Book Now</button>
+				</form>
+			</div>
 		
 		</div>
 	);

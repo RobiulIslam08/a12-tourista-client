@@ -43,7 +43,7 @@ export default useRole;
 //     enabled: !loading && !!user?.email,
 //     queryFn: async () => {
 //       if (user?.email) {
-//         const response = await fetch(`http://localhost:5000/user/${user.email}`, {
+//         
 //           method: 'GET',
 //           headers: {
 //             'Content-Type': 'application/json',
