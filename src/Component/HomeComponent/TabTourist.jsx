@@ -38,7 +38,7 @@ const TabTourist = () => {
 
 		try{
 			const {data} = await axiosCommon.post(`/wishlist`,packageInfo)
-			console.log(data)
+			
 			if(data.insertedId){
 				toast.success('has been added to the wishlist')
 			}

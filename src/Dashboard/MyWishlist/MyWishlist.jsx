@@ -12,12 +12,12 @@ const MyWishlist = () => {
 		queryKey : ['wishlist-data', user?.email],
 		queryFn: async () =>{
 			const {data} = await axiosCommon.get(`/wishlist/${user.email}`)
-      console.log(data)
+    
 			return data
 		}
 	})
   const handleDelete =  (id) => {
-		console.log('delete this', id)
+		
 		Swal.fire({
 			title: "Are you sure?",
 			text: "You won't be able to revert this!",

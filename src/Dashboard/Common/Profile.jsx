@@ -9,7 +9,7 @@ import TouristProfile from "../Profile/TouristProfile";
 const Profile = () => {
 	const [role] = useRole()
 	const {user} = useAuth() || {}
-	console.log(role , 'my role')
+	
 	return (
 		<div>
 			{/* profile design  */}

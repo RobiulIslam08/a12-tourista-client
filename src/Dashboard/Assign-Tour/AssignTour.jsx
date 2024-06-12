@@ -15,11 +15,11 @@ const AssignTour = () => {
 		}
 	})
 	const handleStatus = async (status, id) => {
-		console.log(status, id)
+		
 		const updateInfo = { status }
 		try {
 			const { data } = await axiosCommon.patch(`/update-status/${id}`, updateInfo)
-			console.log(data)
+			
 			if(data.modifiedCount > 0){
 				toast.success('successfully updated')
 			}

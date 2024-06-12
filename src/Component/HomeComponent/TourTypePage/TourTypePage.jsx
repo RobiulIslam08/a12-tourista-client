@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 const TourTypePage = () => {
 	const { typeName } = useParams();
 	const axiosCommon = useAxiosCommon()
-	console.log(typeName)
+
 	const { data: packages = [] } = useQuery({
 		queryKey: ['add-package'],
 		queryFn: async () => {

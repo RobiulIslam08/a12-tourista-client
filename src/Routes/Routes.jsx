@@ -21,6 +21,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Payment from "../Dashboard/Payment/Payment";
 import StoryDetailsPage from "../Dashboard/StoryDetailsPage/StoryDetailsPage";
+import AllStoriesPage from "../Pages/AllStoriesPage/AllStoriesPage";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'story-details-page/:id',
 				element: <StoryDetailsPage></StoryDetailsPage>
+			},
+			{
+				path: 'all-story',
+				element: <AllStoriesPage></AllStoriesPage>
 			}
 		]
 	},

@@ -3,20 +3,18 @@ import { useQuery } from '@tanstack/react-query';
 // import { FacebookShareButton, FacebookIcon } from 'react-share';
 import useAxiosCommon from '../../Pages/hooks/useAxiosCommon';
 import { Link } from 'react-router-dom';
-import Loading from './Loading/Loading';
+
 
 const TouristStorySection = () => {
     const axiosCommon = useAxiosCommon()
-    const {data:stories = [], isLoading} = useQuery({
+    const {data:stories = []} = useQuery({
         queryKey: ['story'],
         queryFn: async () =>{
             const {data} = await axiosCommon.get('/story')
             return data
         }
     })
-    if(isLoading){
-        return <Loading></Loading>
-    }
+    
     return ( 
         <div className="container mx-auto text-center">
                 <div className=" py-12 px-8 mb-40">
@@ -43,9 +41,9 @@ const TouristStorySection = () => {
                     ))}
                 </div>
            
-                <button className="mt-8 btn btn-secondary text-white py-2 px-4 rounded">
-                    <a href="/all-stories">All Stories</a>
-                </button>
+               <Link to='/all-story'> <button className="mt-8 btn btn-secondary text-white py-2 px-4 rounded">
+                    All Stories
+                </button></Link>
             </div>
         </div>
     );

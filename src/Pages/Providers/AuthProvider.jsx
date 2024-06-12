@@ -18,7 +18,7 @@ export const AuthContext = createContext('')
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState('')
-    console.log('first user data', user)
+
     const [loading, setLoading] = useState(true)
     const [reload, setReload] = useState(false)
     const axiosCommon = useAxiosCommon()

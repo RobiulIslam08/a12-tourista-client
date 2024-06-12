@@ -23,7 +23,7 @@ const TourGuideProfile = () => {
 		const profile = user?.photoURL
 		// console.log({phone,education,skills,workExperience, name, email, profile}) 
 		const tourGuideInfo = { phone, education, skills, workExperience, name, email, profile, role }
-		console.log(tourGuideInfo)
+	
 		axiosCommon.post('/guideInfo', tourGuideInfo)
 			.then(res => {
 				console.log(res.data)

@@ -25,7 +25,7 @@ const RegisterPage = () => {
     } = useForm()
 
     const onSubmit = (data)=>{ 
-		console.log('sumb')
+		
         const { email, password,photo, name } = data;
         createUser(email, password)
         // eslint-disable-next-line no-unused-vars

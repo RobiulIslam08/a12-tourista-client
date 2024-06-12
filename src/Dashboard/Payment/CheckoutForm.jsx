@@ -15,11 +15,11 @@ const CheckoutForm = ({price}) => {
 	const axiosCommon = useAxiosCommon()
 	const {user} = useAuth()
 
-	console.log('checkout er price', price)
+	
 	useEffect(()=>{
 		axiosCommon.post('/create-payment-intent', {price: parseInt(price)})
 		.then(res => {
-			console.log(res.data.clientSecret)
+			
 			setClientSecret(res.data.clientSecret)
 		})
 	},[axiosCommon, price])

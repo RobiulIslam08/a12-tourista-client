@@ -30,7 +30,7 @@ const TouristMenu = () => {
 
 					}
 					const {data} = await axiosCommon.put('user', currentUser)
-					console.log('change status ', data)
+				
 					if(data.modifiedCount > 0 ) {
 						Swal.fire({
 							title: "Successful!",
