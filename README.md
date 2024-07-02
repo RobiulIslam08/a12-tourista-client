@@ -47,7 +47,7 @@ Welcome to Tourista, your comprehensive online resource for exploring the best d
    - Search and filter users by name/email and role.
 
 ## I am use  this technoloy in this project:
-   -html
-   -tailwind css
-   -react js
-   -mongodb
+   - html
+   - tailwind css
+   - react js
+   - mongodb
