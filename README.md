@@ -54,3 +54,21 @@ Welcome to Tourista, your comprehensive online resource for exploring the best d
    - tailwind css
    - react js
    - mongodb
+
+## Local Setup
+
+To run the project locally, follow these steps:
+
+### Prerequisites
+
+Ensure you have the following software installed on your system:
+
+- Node.js (https://nodejs.org/)
+- Git (https://git-scm.com/)
+
+### Installation
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/your-username/your-repo.git
