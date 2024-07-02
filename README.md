@@ -71,4 +71,4 @@ Ensure you have the following software installed on your system:
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/RobiulIslam08/a12-tourista-client.git
