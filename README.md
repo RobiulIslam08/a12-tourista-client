@@ -46,7 +46,8 @@ Welcome to Tourista, your comprehensive online resource for exploring the best d
    - Manage users with role assignments (Tour Guide, Admin).
    - Search and filter users by name/email and role.
 
-10. **Advanced Features:**
-    - Pagination for tables to display 10 users at a time.
-    - Discount notifications and animations for frequent bookers.
-    - Framer Motion for animations on the homepage.
+## I am use  this technoloy in this project:
+   -html
+   -tailwind css
+   -react js
+   -mongodb
