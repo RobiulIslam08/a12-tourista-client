@@ -3,7 +3,7 @@
 Welcome to Tourista, your comprehensive online resource for exploring the best destinations in Bangladesh. Whether you're a tourist, tour guide, or admin, our platform offers tailored features to enhance your travel planning and management experience.
 
 ## Admin Credentials
-- **Admin Username:** Robiul Islam
+- **Admin Email:** robiul@gmail.com
 - **Admin Password:** passpassP
 
 ## Live Site URL
