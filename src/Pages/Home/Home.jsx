@@ -10,13 +10,13 @@ const Home = () => {
 	return (
 		<div >
 			<Helmet>
-                <title>Home</title>
-            </Helmet>
+				<title>Home</title>
+			</Helmet>
 			<Banner></Banner>
 			<TabTourist></TabTourist>
 			<TourTypeSection></TourTypeSection>
 			<TouristStorySection></TouristStorySection>
-			
+
 		</div>
 	);
 };

@@ -158,10 +158,10 @@ const Navbar = () => {
     {
       key: "destinations",
       label: "Destinations",
-      path: "/destinations",
+      path: "/destinations/sylhet",
       isMegaMenu: true, // Mark this link as triggering a mega menu
       megaMenuContent: (
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6"> {/* Changed grid-cols */}
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
           {/* Column 1: Popular Regions - ONLY THIS ONE REMAINS */}
           <div>
             <h3 className="font-bold text-lg text-gray-800 mb-3 border-b border-gray-200 pb-2">
@@ -189,14 +189,12 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/destinations/hilltracts" className="text-gray-700 hover:text-[#ff52d9] transition-colors block py-1">
+                <Link to="/destinations/chittagong-hill-tracts" className="text-gray-700 hover:text-[#ff52d9] transition-colors block py-1">
                   Chittagong Hill Tracts
                 </Link>
               </li>
-             
             </ul>
           </div>
-
         </div>
       ),
     },
@@ -227,8 +225,10 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="shadow-sm relative z-50">
-      <div className="navbar bg-base-100 px-4 md:px-8 lg:px-14">
+    // Apply sticky to the outermost div, and ensure it has a background and z-index.
+    // The inner 'navbar' div already has bg-base-100, which is good.
+    <div className="sticky top-0 z-50 shadow-sm bg-base-100"> {/* Moved bg-base-100 here as well for consistency, though inner one also has it */}
+      <div className="navbar px-4 md:px-8 lg:px-14">
         <div className="navbar-start">
           {/* Mobile Dropdown Menu (Hamburger Icon) */}
           <div className="dropdown">
@@ -277,7 +277,6 @@ const Navbar = () => {
                         <li>
                           <Link to="/destinations/hilltracts" className="hover:text-[#ff52d9]">Chittagong Hill Tracts</Link>
                         </li>
-                     
                       </ul>
                     </details>
                   ) : (

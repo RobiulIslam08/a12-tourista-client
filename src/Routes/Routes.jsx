@@ -23,17 +23,42 @@ import Payment from "../Dashboard/Payment/Payment";
 import StoryDetailsPage from "../Dashboard/StoryDetailsPage/StoryDetailsPage";
 import AllStoriesPage from "../Pages/AllStoriesPage/AllStoriesPage";
 import AllPackage from "../Pages/AllPackage/AllPackage";
+import SylhetPage from "../Pages/Destination/SylhetPage";
+import CoxsBazarPage from "../Pages/Destination/CoxsBazarPage";
+import ChittagongHillTractsPage from "../Pages/Destination/ChittagongHillTractsPage";
+import DhakaCentralPage from "../Pages/Destination/DhakaCentralPage";
+import SundarbansPage from "../Pages/Destination/SundarbansPage";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <MainLayout></MainLayout>,
-		errorElement:<ErrorPage></ErrorPage>,
-		children:[
+		errorElement: <ErrorPage></ErrorPage>,
+		children: [
 			{
 				path: '/',
 				element: <Home></Home>
+			},
+			{
+				path: "/destinations/sylhet", // New route
+				element: <SylhetPage />,
+			},
+			{
+				path: "/destinations/coxsbazar", // New route
+				element: <CoxsBazarPage />,
+			},
+			{
+				path: "/destinations/chittagong-hill-tracts", // New route
+				element: <ChittagongHillTractsPage />,
+			},
+			{
+				path: "/destinations/dhaka", // New route
+				element: <DhakaCentralPage />,
+			},
+			{
+				path: "/destinations/sundarbans", // New route
+				element: <SundarbansPage />,
 			},
 			{
 				path: 'login',
@@ -92,40 +117,40 @@ export const router = createBrowserRouter([
 		path: 'dashboard',
 		element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
 		children: [
-			
-				{
-					path: 'register',
-					element: <RegisterPage></RegisterPage>
-				},
-				{
-					path: 'payment/:price',
-					element: <Payment></Payment>
-				},
-				{
-					path: 'my-profile',
-					element: <Profile></Profile>
-				},
-				{
-					path: 'add-package',
-					element: <AddPackage></AddPackage>
-				},
-				{
-					path: 'manage-users',
-					element: <ManageUser></ManageUser>
-				},
-				{
-					path: 'my-bookings',
-					element: <MyBookings></MyBookings>
-				},
-				{
-					path: 'my-assigned-tour',
-					element: <AssignTour></AssignTour>
-				},
-				{
-					path: 'my-wishlist',
-					element: <MyWishlist></MyWishlist>
-				}
-			
+
+			{
+				path: 'register',
+				element: <RegisterPage></RegisterPage>
+			},
+			{
+				path: 'payment/:price',
+				element: <Payment></Payment>
+			},
+			{
+				path: 'my-profile',
+				element: <Profile></Profile>
+			},
+			{
+				path: 'add-package',
+				element: <AddPackage></AddPackage>
+			},
+			{
+				path: 'manage-users',
+				element: <ManageUser></ManageUser>
+			},
+			{
+				path: 'my-bookings',
+				element: <MyBookings></MyBookings>
+			},
+			{
+				path: 'my-assigned-tour',
+				element: <AssignTour></AssignTour>
+			},
+			{
+				path: 'my-wishlist',
+				element: <MyWishlist></MyWishlist>
+			}
+
 		]
 	}
 ]);
