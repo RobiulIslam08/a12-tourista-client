@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import useAuth from "../../Pages/hooks/useAuth";
+ 
 
 const TabTourist = () => {
 	const [tabIndex, setTabIndex] = useState(0);
@@ -65,13 +66,13 @@ const TabTourist = () => {
 						<p className="mb-4 text-justify">
 							Bangladesh is a land of natural beauty and rich cultural heritage. From the world s largest mangrove forest, the Sundarbans, to the longest natural sea beach, Cox s Bazar, there is much to explore and experience.
 						</p>
-						<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-							<iframe className="w-full aspect-video" src="https://www.youtube.com/embed/paNOhUirl9A?si=cZjwNv7xS3YXHd-R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+						<div  className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+							<iframe  className="w-full aspect-video" src="https://www.youtube.com/embed/paNOhUirl9A?si=cZjwNv7xS3YXHd-R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 
 							</iframe>
-							<iframe className="w-full aspect-video" src="https://www.youtube.com/embed/8PYwoxt-OfE?si=iccvc3qEW5-JMprU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-							<iframe className="w-full aspect-video" src="https://www.youtube.com/embed/rDYdeq3JW_E?si=J95gr7sD0zH0l7rK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-							<iframe className="w-full aspect-video" src="https://www.youtube.com/embed/Cn4G2lZ_g2I?si=DEBaMq4nGL_DkS1s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+							<iframe  className="w-full aspect-video" src="https://www.youtube.com/embed/8PYwoxt-OfE?si=iccvc3qEW5-JMprU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+							<iframe  className="w-full aspect-video" src="https://www.youtube.com/embed/rDYdeq3JW_E?si=J95gr7sD0zH0l7rK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+							<iframe  className="w-full aspect-video" src="https://www.youtube.com/embed/Cn4G2lZ_g2I?si=DEBaMq4nGL_DkS1s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 						</div>
@@ -97,9 +98,9 @@ const TabTourist = () => {
 				<TabPanel>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
 					{
-						Package.map(item => <div key={item?._id} className="card  bg-base-100 shadow-xl">
+						Package.slice(0,3).map(item => <div key={item?._id} className="card  bg-base-100 shadow-xl">
 						<figure>
-							<img src={item.spotPhoto} alt="Shoes" />
+							<img src={item.spotPhoto} alt="image" className="w-full h-48 md:h-64 lg:h-72 object-cover"  />
 						</figure>
 							<FaHeart onClick={()=>handleWishlist(item?._id,item?.tourType,item?.tripTitle,item?.price,item.spotPhoto)} className="text-fuchsia-600 text-2xl hover:text-pink-600 absolute right-4  top-4"/>
 						<div className="card-body">
@@ -112,6 +113,10 @@ const TabTourist = () => {
 						</div>
 					</div>)
 					}
+					
+					</div>
+					<div className="flex justify-center items-center w-full mt-10 md:mt-16">
+					<Link to='/all-package'><button className="btn btn-primary">All Package</button></Link>
 					</div>
 					
 				</TabPanel>

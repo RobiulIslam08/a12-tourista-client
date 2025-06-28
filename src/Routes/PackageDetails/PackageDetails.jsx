@@ -7,6 +7,7 @@ import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 const PackageDetails = () => {
 
 	const axiosCommon = useAxiosCommon();
@@ -107,6 +108,9 @@ const PackageDetails = () => {
 
 	return (
 		<div className="container mx-auto p-4">
+			<Helmet>
+                <title>Package Details Page</title>
+            </Helmet>
 			<h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-center mt-10 mb-20">Package Details Here</h1>
 			{/* galary img */}
 			<div className="container mx-auto ">

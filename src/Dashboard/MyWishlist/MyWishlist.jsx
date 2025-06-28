@@ -3,6 +3,7 @@ import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import useAuth from "../../Pages/hooks/useAuth";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const MyWishlist = () => {
@@ -48,8 +49,12 @@ const MyWishlist = () => {
 	}
 	return (
 		<div>
+			<Helmet>
+                <title>My Wishlist Page</title>
+            </Helmet>
 			<h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-center my-14">My Wishlist</h1>
-			<div className="overflow-x-auto">
+			<div  data-aos="fade-right"
+     className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>

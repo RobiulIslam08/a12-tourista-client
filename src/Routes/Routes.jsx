@@ -22,6 +22,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Payment from "../Dashboard/Payment/Payment";
 import StoryDetailsPage from "../Dashboard/StoryDetailsPage/StoryDetailsPage";
 import AllStoriesPage from "../Pages/AllStoriesPage/AllStoriesPage";
+import AllPackage from "../Pages/AllPackage/AllPackage";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
@@ -79,7 +80,12 @@ export const router = createBrowserRouter([
 			{
 				path: 'all-story',
 				element: <AllStoriesPage></AllStoriesPage>
+			},
+			{
+				path: 'all-package',
+				element: <AllPackage></AllPackage>
 			}
+
 		]
 	},
 	{

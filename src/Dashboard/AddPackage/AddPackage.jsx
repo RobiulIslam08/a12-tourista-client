@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 
 import useAxiosSecure from "../../Pages/hooks/useAxiosSecure";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 
 const AddPackage = () => {
@@ -54,7 +55,17 @@ const AddPackage = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 py-12">
+        <div  data-aos="fade-up"
+        data-aos-offset="200"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        data-aos-anchor-placement="top-center" className="container mx-auto px-4 py-12">
+            <Helmet>
+                <title>Add Package Page</title>
+            </Helmet>
             <h2 className="text-3xl font-bold mb-8 text-center">Add My Package</h2>
             <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
                 <div className="mb-4">

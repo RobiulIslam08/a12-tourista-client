@@ -41,7 +41,9 @@ const TourGuideProfile = () => {
 			})
 	}
 	return (
-		<div>
+		<div 
+		data-aos="fade-left"
+		>
 			<form onSubmit={handleForm} className="w-[70%] mx-auto">
 				<h1 className="text-5xl my-10" >Added My information</h1>
 				{/* <div className="mb-4">

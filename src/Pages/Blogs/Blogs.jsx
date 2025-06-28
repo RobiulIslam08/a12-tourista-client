@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Helmet } from "react-helmet";
+
 
 const tours = [
   {
@@ -83,14 +85,29 @@ const TourCard = ({ tour }) => (
 const Blogs = () => {
   return (
     <div>
+      <Helmet>
+                <title>Blogs Page</title>
+            </Helmet>
       <section className="bg-base-200 text-base-content">
-        <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+        <div
+          data-aos="fade-up"
+          data-aos-offset="200"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top-center"
+         className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
           {/* Main Tour Block */}
           <TourCard tour={tours[0]} />
           {/* Other Tour Blocks */}
-          <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+          
+           className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {tours.slice(1).map(tour => (
-              <a
+              <div
+              
                 key={tour.id}
                 rel="noopener noreferrer"
                 href={tour.viewPackageUrl}
@@ -109,7 +126,7 @@ const Blogs = () => {
                   <span className="text-xs text-base-content">{tour.price}</span>
                   <p>{tour.aboutTour}</p>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
           <div className="flex justify-center">

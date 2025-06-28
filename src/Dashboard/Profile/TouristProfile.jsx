@@ -41,7 +41,8 @@ const TouristProfile = () => {
 		
 	}
 	return (
-		<div>
+		<div  data-aos="fade-up"
+		>
 			<h1 className="text-lg md:text-3xl font-bold text-center mt-20"> Add Your Story</h1>
 			<div className="max-w-2xl mx-auto my-10 p-6 bg-fuchsia-300 rounded-lg shadow-md">
 				<form onSubmit={handleForm}>

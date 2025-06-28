@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Pages/hooks/useAuth";
 import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 
 const AssignTour = () => {
@@ -31,6 +32,9 @@ const AssignTour = () => {
 	}
 	return (
 		<div>
+			<Helmet>
+                <title>My Assign Tour Page</title>
+            </Helmet>
 			<p className="text-center text-lg md:text-2xl lg:text-3xl font-bold my-14">My Assigned Tour</p>
 			<div className="overflow-x-auto">
 				<table className="table">

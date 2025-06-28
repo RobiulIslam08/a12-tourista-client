@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import useAuth from "../../Pages/hooks/useAuth";
 import useRole from "../../Pages/hooks/useRole";
 import AdminProfile from "../Profile/AdminProfile";
@@ -8,12 +9,21 @@ import TouristProfile from "../Profile/TouristProfile";
 
 const Profile = () => {
 	const [role] = useRole()
-	const {user} = useAuth() || {}
-	
+	const { user } = useAuth() || {}
+
 	return (
-		<div>
+		<div data-aos="fade-up"
+			data-aos-offset="200"
+			data-aos-delay="50"
+			data-aos-duration="1000"
+			data-aos-easing="ease-in-out"
+			data-aos-mirror="true"
+			data-aos-once="false"
+			data-aos-anchor-placement="top-center">
 			{/* profile design  */}
-			
+			<Helmet>
+				<title>Profile Page</title>
+			</Helmet>
 			<div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-10">
 				<div className="bg-pink-500 h-32 flex items-center justify-center">
 					<div className="relative">
@@ -44,7 +54,7 @@ const Profile = () => {
 			{role === 'Admin' && <AdminProfile></AdminProfile>}
 			{role === 'Tourist' && <TouristProfile></TouristProfile>}
 			{role === 'Tour Guide' && <TourGuideProfile></TourGuideProfile>}
-			
+
 		</div>
 	);
 };

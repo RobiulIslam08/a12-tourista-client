@@ -11,7 +11,7 @@ const AdminMenu = () => {
 			<MenuItem icon={BsFillHouseAddFill} label='Add Package' address='add-package' />
 			<MenuItem icon={FaUserCog} label='Manage Users' address='manage-users'></MenuItem>
 		</div>
-	);
+	); 
 };
 
 export default AdminMenu;

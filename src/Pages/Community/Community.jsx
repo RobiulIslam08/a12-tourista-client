@@ -1,12 +1,20 @@
+import { Helmet } from "react-helmet";
 
 const Community = () => {
     return (
-        <div className="flex flex-col lg:flex-row items-center bg-purple-300 p-8 rounded-lg my-40 shadow-lg">
+      <div>
+        <Helmet>
+                <title>Community Page</title>
+            </Helmet>
+          <div
+            data-aos="fade-right"
+
+            className="flex flex-col lg:flex-row items-center bg-purple-300 p-8 rounded-lg my-10 lg:my-20 shadow-lg">
             <div className="flex-1 mb-8 lg:mb-0">
                 <h1 className="text-4xl font-bold text-gray-800 mb-4">Join Our Community</h1>
                 <p className="text-xl text-gray-600 mb-4">Grow your tourist experience</p>
                 <p className="text-gray-500 mb-6">
-                   We always try to best service porvide . We have a dedicated team member. They are very Experience. If you get our tour package , you will see many wonderful place .
+                    We always try to best service porvide . We have a dedicated team member. They are very Experience. If you get our tour package , you will see many wonderful place .
                 </p>
                 <div className="flex items-center space-x-4">
                     <input type="text" placeholder="www.website.com" className="input input-bordered w-full max-w-xs" />
@@ -18,6 +26,7 @@ const Community = () => {
                 <div className="absolute bottom-0 right-0 bg-white px-4 py-2 rounded-full shadow-lg">Tammy P.</div>
             </div>
         </div>
+      </div>
     );
 };
 

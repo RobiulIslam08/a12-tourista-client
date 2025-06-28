@@ -3,6 +3,7 @@ import useAxiosCommon from "../../Pages/hooks/useAxiosCommon";
 import useAuth from "../../Pages/hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 
@@ -19,8 +20,9 @@ const MyBookings = () => {
 		enabled: !!user?.email,
 	})
 
-	const handleDelete =  (id) => {
-		
+
+	const handleDelete = (id) => {
+
 		Swal.fire({
 			title: "Are you sure?",
 			text: "You won't be able to revert this!",
@@ -29,9 +31,9 @@ const MyBookings = () => {
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
 			confirmButtonText: "Yes, delete it!"
-		}).then(async(result) => {
+		}).then(async (result) => {
 			if (result.isConfirmed) {
-				
+
 				try {
 					const { data } = await axiosCommon.delete(`/booking-delete/${id}`)
 					Swal.fire({
@@ -47,13 +49,17 @@ const MyBookings = () => {
 				}
 			}
 		});
-		
+
 	}
-	
+
 	return (
 		<div>
+			<Helmet>
+                <title>My Booking Page</title>
+            </Helmet>
 			<p className="text-lg md:text-2xl lg:text-3xl text-center my-14 font-bold">My Booking</p>
-			<div className="overflow-x-auto">
+			<div data-aos="fade-left"
+				className="overflow-x-auto">
 				<table className="table">
 					{/* head */}
 					<thead>
@@ -83,7 +89,7 @@ const MyBookings = () => {
 								<td>{item?.status}</td>
 								<th><Link to={`/dashboard/payment/${item?.price}`} payment={item?.price}><button disabled={item?.status !== 'Accepted'} className="btn btn-xs text-black bg-[#f472b6] hover:bg-[#f355a7]">Pay</button></Link></th>
 								{
-									item?.status =='Review' && <><th><button onClick={() => handleDelete(item?._id)} className="btn btn-xs btn-error">Cencel</button></th></>
+									item?.status == 'Review' && <><th><button onClick={() => handleDelete(item?._id)} className="btn btn-xs btn-error">Cencel</button></th></>
 								}
 
 							</tr>)
