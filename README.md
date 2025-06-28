@@ -3,11 +3,14 @@
 Welcome to Tourista, your comprehensive online resource for exploring the best destinations in Bangladesh. Whether you're a tourist, tour guide, or admin, our platform offers tailored features to enhance your travel planning and management experience.
 
 ## Admin Credentials
-- **Admin Username:** Robiul Islam
+- **Admin Email:** robiul@gmail.com
 - **Admin Password:** passpassP
 
 ## Live Site URL
 [Tourista Live Site](https://tourista-81113.web.app/)
+
+## Server Site Github Link
+[Server Site Github Link](https://github.com/RobiulIslam08/a12-tourista-server)
 
 ## Features
 
@@ -46,7 +49,26 @@ Welcome to Tourista, your comprehensive online resource for exploring the best d
    - Manage users with role assignments (Tour Guide, Admin).
    - Search and filter users by name/email and role.
 
-10. **Advanced Features:**
-    - Pagination for tables to display 10 users at a time.
-    - Discount notifications and animations for frequent bookers.
-    - Framer Motion for animations on the homepage.
+## I am use  this technoloy in this project:
+   - html
+   - tailwind css
+   - react js
+   - mongodb
+
+## Local Setup
+
+To run the project locally, follow these steps:
+
+### Prerequisites
+
+Ensure you have the following software installed on your system:
+
+- Node.js (https://nodejs.org/)
+- Git (https://git-scm.com/)
+
+### Installation
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/RobiulIslam08/a12-tourista-client.git
