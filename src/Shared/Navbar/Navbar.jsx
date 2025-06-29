@@ -199,11 +199,18 @@ const Navbar = () => {
       ),
     },
     {
+      key: "allPackage",
+      label: "All Package",
+      path: "/all-package",
+      isMegaMenu: false,
+    },
+    {
       key: "community",
       label: "Community",
       path: "/community",
       isMegaMenu: false,
     },
+
     {
       key: "blogs",
       label: "Blogs",
@@ -339,7 +346,7 @@ const Navbar = () => {
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border border-gray-200"
               >
                 <li>
-                  <Link to="/dashboard/my-profile" className="justify-between text-gray-700 hover:text-[#ff52d9]">
+                  <Link to="/dashboard/my-profile" className="justify-between text-gray-400 hover:text-[#ff52d9]">
                     Dashboard
                   </Link>
                 </li>

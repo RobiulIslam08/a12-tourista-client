@@ -28,6 +28,7 @@ import CoxsBazarPage from "../Pages/Destination/CoxsBazarPage";
 import ChittagongHillTractsPage from "../Pages/Destination/ChittagongHillTractsPage";
 import DhakaCentralPage from "../Pages/Destination/DhakaCentralPage";
 import SundarbansPage from "../Pages/Destination/SundarbansPage";
+import AllPackagesPage from "../Pages/AllPackage/AllPackagePage";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'community',
 				element: <Community></Community>
+			},
+			{
+				path: 'all-package',
+				element: <AllPackagesPage></AllPackagesPage>
 			},
 			{
 				path: 'blogs',
