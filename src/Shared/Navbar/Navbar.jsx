@@ -302,7 +302,7 @@ const Navbar = () => {
           </div>
           <div className="flex gap-2 items-center">
             <img className="w-10 h-10" src="/travelling.png" alt="logo" />
-            <p className="text-2xl font-bold text-white">
+            <p className="text-2xl font-bold ">
               Tour<span className="text-[#ff52d9]">ista</span>
             </p>
           </div>
