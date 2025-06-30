@@ -74,7 +74,7 @@ export const router = createBrowserRouter([
 				element: <GuideDetails></GuideDetails>
 			},
 			{
-				path: 'package-detaisl/:id',
+				path: 'package-details/:id',
 				element: <PackageDetails></PackageDetails>
 			},
 			{

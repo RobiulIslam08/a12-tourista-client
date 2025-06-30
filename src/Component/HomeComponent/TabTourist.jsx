@@ -330,7 +330,7 @@ const TabTourist = () => {
                                     <p>{item?.tripTitle}</p>
                                     <p>Price: ${item?.price}</p>
                                     <div className="card-actions justify-start">
-                                        <Link to={`/package-detaisl/${item?._id}`}><button className="btn btn-secondary btn-sm">View Package</button></Link>
+                                        <Link to={`/package-details/${item?._id}`}><button className="btn btn-secondary btn-sm">View Package</button></Link>
                                     </div>
                                 </div>
                             </div>

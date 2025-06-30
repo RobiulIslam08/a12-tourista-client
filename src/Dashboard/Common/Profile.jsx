@@ -43,10 +43,7 @@ const Profile = () => {
 					<div className="mt-4">
 						<p className="text-center text-gray-800 font-bold">User Id: dN7hEP0kSAQIZtKnFibUke3uQa12</p>
 					</div>
-					<div className="flex justify-around mt-4">
-						<button className="btn btn-primary">Update Profile</button>
-						<button className="btn btn-secondary">Change Password</button>
-					</div>
+				
 				</div>
 			</div>
 
