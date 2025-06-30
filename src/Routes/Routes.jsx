@@ -29,6 +29,7 @@ import ChittagongHillTractsPage from "../Pages/Destination/ChittagongHillTractsP
 import DhakaCentralPage from "../Pages/Destination/DhakaCentralPage";
 import SundarbansPage from "../Pages/Destination/SundarbansPage";
 import AllPackagesPage from "../Pages/AllPackage/AllPackagePage";
+import BlogDetailsPage from "../Pages/BlogDetailsPage/BlogDetailsPage";
 // import AssignTour from "../Dashboard/AssignTour/AssignTour";
 
 export const router = createBrowserRouter([
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'blogs',
 				element: <Blogs></Blogs>,
+			},
+			{
+				path: 'blogs/:id', // :id প্যারামিটার দিয়ে নির্দিষ্ট ব্লগকে চিহ্নিত করা হবে
+				element: <BlogDetailsPage></BlogDetailsPage>
 			},
 
 			{
